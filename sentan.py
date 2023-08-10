@@ -19,7 +19,6 @@ data_load_state = st.text('Загрузка данных...')
 data = load_data()
 data_load_state.text('Данные загружены!')
 
-
 if st.checkbox('Показать словарь'):
     st.subheader('Данные словаря')
     st.write(data)
@@ -40,14 +39,14 @@ with open('text.txt', 'r', encoding='utf-8') as f:
         for word in words:
             # проверяем, есть ли слово в датасете
             word = word.lower()
-            #st.write(word)
+            # st.write(word)
             if word in data['term'].values:
                 # если есть, то добавляем значение из поля value к общему значению
 
                 total_value += data.loc[data['term'] == word, 'value'].values[0]
                 count += 1
-    if ( count != 0):
-        res = total_value/count
+    if (count != 0):
+        res = total_value / count
         print(res)
         if (res > 0.5):
             st.write(res, 'Хороший отзыв')
